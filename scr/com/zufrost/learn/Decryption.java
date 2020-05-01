@@ -2,16 +2,11 @@ package com.zufrost.learn;
 
 public class Decryption {
     public static void main(String[] args) {
-        for (int i = 0; i < Alphabet.getRussianAlphabetLowCase().length; i++) {
-            System.out.print(Alphabet.getRussianAlphabetLowCase()[i] + " ");
-        }
-        System.out.println();
-        System.out.println(CipherText.getCipherText());
 
-        for (int h = 11; h <= 11; h++) {
+        for (int h = 0; h < Alphabet.RUSSIAN_ALPHABET_POWER; h++) {
             CaesarCodeKey.setCaesarCodeKey(h);
             for (int i = 0; i < CipherText.getCipherTextInCharArray().length; i++) {
-                //разделяем на алфавит и остальные знаки
+                //split to UpperCase LowerCase and Other Symbols
                 char charInCipherText = CipherText.getCipherTextInCharArray()[i];
                 if (charInCipherText >= 'А' && charInCipherText <= 'Я' || charInCipherText == 'Ё') {
                     //in UpperCase
@@ -26,6 +21,7 @@ public class Decryption {
                     System.out.print(charInCipherText);
                 }
             }
+            System.out.println();
         }
     }
 }
