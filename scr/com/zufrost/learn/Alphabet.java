@@ -13,4 +13,31 @@ public class Alphabet {
         return russianAlphabetUpCase;
     }
 
+    public static int getSerialNumberInAlphabet(char charInCipherText) {
+        for (int i = 0; i < Alphabet.RUSSIAN_ALPHABET_POWER; i++) {
+            if (Alphabet.getRussianAlphabetUpCase()[i] == charInCipherText || Alphabet.getRussianAlphabetLowCase()[i] == charInCipherText) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static char getCharFromUpCaseAlphabetWithCaesarCodeKeyMovement(int serialNumberInAlphabet, int caesarCodeKey) {
+        //    применяем сдвиг право на CaesarCodeKey.getCaesarCodeKey() элементов
+        if (serialNumberInAlphabet + caesarCodeKey >= Alphabet.RUSSIAN_ALPHABET_POWER) {
+            return Alphabet.getRussianAlphabetUpCase()[serialNumberInAlphabet + caesarCodeKey - Alphabet.RUSSIAN_ALPHABET_POWER];
+        } else {
+            return Alphabet.getRussianAlphabetUpCase()[serialNumberInAlphabet + caesarCodeKey];
+        }
+    }
+
+    public static char getCharFromLowCaseAlphabetWithCaesarCodeKeyMovement(int serialNumberInAlphabet, int caesarCodeKey) {
+        //    применяем сдвиг право на CaesarCodeKey.getCaesarCodeKey() элементов
+        if (serialNumberInAlphabet + caesarCodeKey >= Alphabet.RUSSIAN_ALPHABET_POWER) {
+            return Alphabet.getRussianAlphabetLowCase()[serialNumberInAlphabet + caesarCodeKey - Alphabet.RUSSIAN_ALPHABET_POWER];
+        } else {
+            return Alphabet.getRussianAlphabetLowCase()[serialNumberInAlphabet + caesarCodeKey];
+        }
+    }
+
 }
